@@ -1031,26 +1031,478 @@ footer hr {
   height: 1px;
   border: none;
 }
-@media screen and (max-width: 575px) {
-  section {
-    grid-template-columns: 1fr 1fr;
-    display: block;
+/* =========================================================
+   RESPONSIVE STYLES
+   Breakpoints: 1200px / 1024px / 768px / 480px / 360px
+   ========================================================= */
+
+/* ---------- 1200px and below (small laptops) ---------- */
+@media screen and (max-width: 1200px) {
+  section,
+  .harry-actor,
+  .explore,
+  .wizarding-world,
+  .magical {
+    padding-left: 60px;
+    padding-right: 60px;
   }
-  .group-type {
-    display: block;
+
+  .group-type .groups {
+    left: 50%;
+    transform: translateX(-50%);
   }
-  .quizzes {
-    grid-template-columns: 1fr;
-    display: block;
+
+  .explore .items,
+  .world,
+  section .magic {
+    grid-template-columns: repeat(4, 1fr);
   }
-  .harry-actor {
-    display: block;
+
+  .quizzes .boxes {
+    grid-template-columns: repeat(2, 1fr);
   }
-  .explore {
-    grid-template-columns: 1fr;
-    display: block;
-  }
-  footer {
-    display: block;
+  .quizzes .boxes .dobby,
+  .quizzes .boxes .snape,
+  .quizzes .boxes .harry {
+    width: 100%;
   }
 }
+
+/* ---------- 1024px and below (tablets) ---------- */
+@media screen and (max-width: 1024px) {
+  :root {
+    --header-h: 90px;
+    --hero-offset: 150px;
+  }
+
+  header {
+    padding: 20px 25px;
+  }
+  header img {
+    width: 130px;
+  }
+  header input {
+    width: 150px;
+  }
+  .search i {
+    right: 158px;
+  }
+
+  nav ul li {
+    font-size: 12px;
+    margin: 16px 8px;
+  }
+
+  main p {
+    font-size: 36px;
+    max-width: 70%;
+    line-height: 42px;
+  }
+  main span {
+    width: 60%;
+    font-size: 16px;
+  }
+
+  section {
+    grid-template-columns: 1fr;
+    gap: 50px;
+  }
+  section .left {
+    justify-content: center;
+  }
+  section .right button {
+    width: 100%;
+    max-width: 450px;
+  }
+
+  .group-type .sorted-line {
+    width: 90%;
+    max-width: 700px;
+    margin: 0 auto;
+  }
+  .group-type .house p {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  .group-type .groups {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+  }
+
+  .explore .items,
+  .world,
+  section .magic {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+  }
+  .world li,
+  section .magic li,
+  .explore li {
+    width: 100%;
+  }
+
+  .harry-actor {
+    padding: 50px 60px;
+    gap: 30px;
+  }
+  .harry-actor img {
+    width: 100%;
+    max-width: 450px;
+    height: auto;
+  }
+
+  footer .top {
+    gap: 60px;
+  }
+  footer .top .left {
+    gap: 30px;
+  }
+  footer .bottom .left p {
+    width: 100%;
+  }
+}
+
+/* ---------- 768px and below (large phones / small tablets) ---------- */
+@media screen and (max-width: 768px) {
+  :root {
+    --header-h: 70px;
+    --hero-offset: 115px;
+  }
+
+  /* ---- header becomes a compact bar with a hamburger ---- */
+  header {
+    padding: 14px 18px;
+    height: var(--header-h);
+  }
+  .menu-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  header .icon {
+    display: none;
+  }
+  header img {
+    width: 100px;
+    right: auto;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
+  header .search {
+    column-gap: 6px;
+  }
+  header input {
+    display: none;
+  }
+  .search i {
+    position: static;
+    font-size: 18px;
+  }
+  header #butt1 {
+    display: none;
+  }
+  header #butt2 {
+    width: auto;
+    padding: 0 14px;
+    font-size: 11px;
+  }
+
+  /* ---- nav becomes a slide-down drawer ---- */
+  nav {
+    top: var(--header-h);
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.35s ease;
+    z-index: 1000;
+  }
+  nav.nav-open {
+    max-height: calc(100vh - var(--header-h));
+    overflow-y: auto;
+  }
+  nav hr {
+    display: none;
+  }
+  nav ul {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 10px 25px 30px;
+  }
+  nav ul li {
+    width: 100%;
+    margin: 0;
+    padding: 14px 0;
+    border-bottom: 1px solid #222a3a;
+    font-size: 14px;
+    display: flex;
+    justify-content: space-between;
+  }
+  .nav-backdrop {
+    display: block;
+  }
+
+  /* ---- hero ---- */
+  main p {
+    font-size: 26px;
+    max-width: 85%;
+    line-height: 32px;
+    letter-spacing: 1px;
+  }
+  main span {
+    width: 80%;
+    font-size: 14px;
+    line-height: 20px;
+  }
+  main button {
+    padding: 9px 30px;
+    font-size: 13px;
+  }
+
+  /* ---- poll section ---- */
+  section {
+    padding: 0 24px;
+  }
+  section .left {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+    justify-content: stretch;
+  }
+  section .left .voldemort,
+  section .left .snape2,
+  section .left .portraite,
+  section .left .grooh {
+    width: 100%;
+    height: 200px;
+  }
+  section .right {
+    padding: 30px 18px;
+  }
+  section .right h2 {
+    font-size: 22px;
+    margin-bottom: 30px;
+  }
+  section .right button {
+    height: 50px;
+    font-size: 15px;
+    white-space: normal;
+  }
+
+  /* ---- sorted / house flags: drop the absolute-positioned desktop layout ---- */
+  .group-type {
+    margin-top: 100px;
+    padding: 0 20px;
+  }
+  .group-type .house {
+    position: relative;
+  }
+  .group-type .sorted-line {
+    width: 100%;
+  }
+  .group-type .house p {
+    position: static;
+    transform: none;
+    display: inline-block;
+    margin: 16px auto 0;
+  }
+  .group-type .groups {
+    position: static;
+    transform: none;
+    left: auto;
+    top: auto;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px 16px;
+    margin-top: 24px;
+  }
+  .sorted {
+    width: 100%;
+    text-align: center;
+    margin-top: 30px;
+  }
+
+  /* ---- quizzes ---- */
+  .quizzes {
+    margin-top: 100px;
+    padding: 0 20px;
+  }
+  .quizzes .boxes {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  .quizzes .boxes .dobby,
+  .quizzes .boxes .snape,
+  .quizzes .boxes .harry {
+    width: 100%;
+    height: 220px;
+  }
+
+  /* ---- harry actor ---- */
+  .harry-actor {
+    flex-direction: column;
+    padding: 40px 24px;
+    margin-top: 100px;
+    gap: 20px;
+  }
+  .harry-actor h2 {
+    font-size: 24px;
+  }
+  .harry-actor img {
+    max-width: 100%;
+    height: auto;
+    order: -1;
+  }
+
+  /* ---- explore / wizarding world / magical: horizontal scroll carousels ---- */
+  .explore,
+  .wizarding-world,
+  .magical {
+    height: auto;
+    padding: 40px 20px;
+  }
+  .explore-titr p,
+  .wizard-titr p,
+  .magical-titr p {
+    font-size: 24px;
+  }
+  .explore .items,
+  .world,
+  section .magic {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    gap: 14px;
+    padding-bottom: 10px;
+  }
+  .explore .items {
+    margin-top: 24px;
+  }
+  .explore li,
+  .world li,
+  section .magic li {
+    flex: 0 0 150px;
+    width: 150px;
+    height: 260px;
+    scroll-snap-align: start;
+  }
+  .wizarding-world .world li p {
+    font-size: 15px;
+    left: 20px;
+    bottom: 60px;
+  }
+  .world i,
+  section .magic i {
+    display: none;
+  }
+  .explore a {
+    display: block;
+    margin-top: 20px;
+  }
+
+  /* ---- footer ---- */
+  footer {
+    height: auto;
+    padding: 30px 16px;
+  }
+  footer .box {
+    padding: 24px 20px;
+  }
+  footer .top {
+    flex-direction: column;
+    gap: 30px;
+  }
+  footer .top .left {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+  footer .top .right {
+    align-self: flex-start;
+  }
+  footer .bottom {
+    flex-direction: column;
+    gap: 20px;
+  }
+  footer .bottom .left p {
+    width: 100%;
+    font-size: 13px;
+  }
+}
+
+/* ---------- 480px and below (phones) ---------- */
+@media screen and (max-width: 480px) {
+  :root {
+    --header-h: 64px;
+    --hero-offset: 95px;
+  }
+
+  header {
+    padding: 12px 14px;
+  }
+  header img {
+    width: 80px;
+  }
+  header #butt2 {
+    font-size: 10px;
+    padding: 0 10px;
+    height: 30px;
+  }
+
+  main p {
+    font-size: 21px;
+    max-width: 95%;
+    line-height: 27px;
+  }
+  main span {
+    width: 92%;
+    font-size: 13px;
+  }
+
+  section .left {
+    grid-template-columns: 1fr 1fr;
+  }
+  section .left .voldemort,
+  section .left .snape2,
+  section .left .portraite,
+  section .left .grooh {
+    height: 160px;
+  }
+  section .left h3 {
+    font-size: 9px;
+    width: auto;
+  }
+
+  .group-type .groups {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 18px 12px;
+  }
+  .gryff-border,
+  .raven-border,
+  .huff-border,
+  .sly-border {
+    width: 80px;
+    height: 115px;
+  }
+
+  .quizzes .boxes .dobby,
+  .quizzes .boxes .snape,
+  .quizzes .boxes .harry {
+    height: 190px;
+  }
+
+  footer .top .left {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ---------- 360px and below (small phones) ---------- */
+@media screen and (max-width: 360px) {
+  main p {
+    font-size: 18px;
+    line-height: 24px;
+  }
+  section .left {
+    grid-template-columns: 1fr;
+  }
+  .group-type .groups {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
